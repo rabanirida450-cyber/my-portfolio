@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --pink:#e8a0bf;
+  --pink-light:#fce4ec;
+  --pink-dark:#c2185b;
+  --lavender:#c9b8e8;
+  --lav-light:#ede7f6;
+  --lav-dark:#7b5ea7;
+  --peach:#f7cac9;
+  --sky:#b3d9f2;
+  --text:#2d1b3d;
+  --muted:#7a6080;
+  --border:#e8d5f0;
+  --bg:#fdf8ff;
+  --white:#fff;
+}
+body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
+h1,h2,h3{font-family:'DM Serif Display',serif}
+a{color:var(--lav-dark);text-decoration:none}
+
+nav{position:sticky;top:0;background:rgba(253,248,255,0.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:100;padding:0 2rem}
+nav ul{display:flex;gap:2rem;list-style:none;justify-content:flex-end;padding:.85rem 0;max-width:960px;margin:0 auto}
+nav a{font-size:.88rem;font-weight:500;color:var(--muted);letter-spacing:.03em;transition:color .2s}
+nav a:hover{color:var(--lav-dark)}
+
+.hero{padding:7rem 2rem 5rem;text-align:center;background:linear-gradient(160deg,#fce4ec 0%,#ede7f6 45%,#e3f2fd 100%)}
+.hero-inner{max-width:680px;margin:0 auto}
+.avatar{width:92px;height:92px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--lavender));color:#fff;font-family:'DM Serif Display',serif;font-size:1.8rem;display:flex;align-items:center;justify-content:center;margin:0 auto 1.6rem;border:3px solid #fff;box-shadow:0 4px 20px rgba(180,120,200,.25)}
+h1{font-size:2.8rem;font-weight:400;color:var(--text);margin-bottom:.4rem;line-height:1.15}
+.tagline{font-family:'DM Sans',sans-serif;font-size:1rem;color:var(--muted);margin-bottom:1.6rem;font-weight:300;letter-spacing:.02em}
+.badges{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap}
+.badge{font-size:.78rem;padding:.3rem .9rem;border-radius:999px;font-weight:500;letter-spacing:.02em}
+.badge.pink{background:#fce4ec;color:#ad1457;border:1px solid #f8bbd0}
+.badge.lav{background:#ede7f6;color:#6a3d9a;border:1px solid #d1c4e9}
+.badge.sky{background:#e3f2fd;color:#1565c0;border:1px solid #bbdefb}
+.badge.peach{background:#fff3e0;color:#e65100;border:1px solid #ffe0b2}
+
+section{padding:5rem 2rem;max-width:960px;margin:0 auto}
+h2{font-size:2rem;font-weight:400;margin-bottom:.4rem;color:var(--text)}
+.section-line{width:48px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--pink),var(--lavender));margin-bottom:2rem}
+
+.about-text{color:var(--muted);font-size:.97rem;max-width:640px;line-height:1.85;font-weight:300}
+
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+.skill-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.3rem;transition:transform .2s,box-shadow .2s}
+.skill-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(180,120,200,.15)}
+.skill-card h3{font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.8rem}
+.skill-tags{display:flex;flex-wrap:wrap;gap:.35rem}
+.skill-tag{background:var(--lav-light);color:var(--lav-dark);border:1px solid #d1c4e9;font-size:.8rem;padding:.22rem .65rem;border-radius:6px}
+
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem}
+.cert-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.4rem;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden}
+.cert-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--pink),var(--lavender),var(--sky))}
+.cert-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(180,120,200,.15)}
+.cert-icon{font-size:1.6rem;margin-bottom:.8rem}
+.cert-card h3{font-size:1rem;font-weight:400;margin-bottom:.35rem;color:var(--text)}
+.cert-card p{font-size:.83rem;color:var(--muted);line-height:1.6;font-weight:300}
+
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+.proj-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.4rem;transition:transform .2s,box-shadow .2s}
+.proj-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(180,120,200,.15)}
+.proj-tag{display:inline-block;font-size:.75rem;padding:.2rem .65rem;border-radius:999px;margin-bottom:.7rem;font-weight:500}
+.proj-tag.pink{background:#fce4ec;color:#ad1457}
+.proj-tag.lav{background:#ede7f6;color:#6a3d9a}
+.proj-tag.sky{background:#e3f2fd;color:#1565c0}
+.proj-card h3{font-size:1.05rem;font-weight:400;margin-bottom:.4rem}
+.proj-card p{font-size:.83rem;color:var(--muted);line-height:1.65;font-weight:300}
+
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start}
+.contact-intro{color:var(--muted);font-size:.95rem;line-height:1.8;font-weight:300;margin-bottom:1.4rem}
+.contact-links{display:flex;flex-direction:column;gap:.7rem}
+.contact-link{display:flex;align-items:center;gap:.75rem;font-size:.9rem;color:var(--muted);transition:color .2s}
+.contact-link:hover{color:var(--lav-dark)}
+.contact-link .icon{width:36px;height:36px;border-radius:10px;background:var(--lav-light);border:1px solid #d1c4e9;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+.contact-form{display:flex;flex-direction:column;gap:.75rem}
+.contact-form input,.contact-form textarea{padding:.72rem 1rem;border:1px solid var(--border);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:.9rem;color:var(--text);background:var(--white);outline:none;transition:border-color .2s;font-weight:300}
+.contact-form input:focus,.contact-form textarea:focus{border-color:var(--lavender)}
+.contact-form textarea{min-height:110px;resize:vertical}
+.btn{background:linear-gradient(135deg,var(--pink-dark),var(--lav-dark));color:#fff;border:none;padding:.75rem 1.6rem;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:500;cursor:pointer;letter-spacing:.02em;transition:opacity .2s}
+.btn:hover{opacity:.88}
+
+footer{text-align:center;padding:2rem;font-size:.83rem;color:var(--muted);border-top:1px solid var(--border)}
+footer span{color:var(--pink-dark)}
+
+@media(max-width:620px){.contact-wrap{grid-template-columns:1fr}h1{font-size:2rem}}
+</style>
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#certificates">Certificates</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="avatar">RF</div>
+    <h1>Rida Fatima</h1>
+    <p class="tagline">IT Student &amp; Aspiring Software Engineer</p>
+    <div class="badges">
+      <span class="badge pink">App Development</span>
+      <span class="badge lav">Project Management</span>
+      <span class="badge sky">Software Engineering</span>
+    </div>
+  </div>
+</div>
+
+<section id="about">
+  <h2>About me</h2>
+  <div class="section-line"></div>
+  <p class="about-text">
+    I'm an IT student passionate about building software and solving real-world problems through technology. I hold certified experience in project development, app development, software engineering job simulations, and data labelling — and I'm actively growing my skills to contribute meaningfully to the tech industry.
+  </p>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="section-line"></div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <h3>Languages</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">HTML/CSS</span>
+        <span class="skill-tag">SQL</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <h3>Development</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">App Development</span>
+        <span class="skill-tag">Web Development</span>
+        <span class="skill-tag">REST APIs</span>
+        <span class="skill-tag">Git & GitHub</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <h3>Soft Skills</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Problem Solving</span>
+        <span class="skill-tag">Team Collaboration</span>
+        <span class="skill-tag">Project Management</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certificates">
+  <h2>Certificates</h2>
+  <div class="section-line"></div>
+  <div class="certs-grid">
+    <div class="cert-card">
+      <div class="cert-icon">🏗️</div>
+      <h3>Project Management</h3>
+      <p>Certified in planning, managing, and delivering complete software projects from inception to deployment.</p>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">📱</div>
+      <h3>App Development</h3>
+      <p>Hands-on certification covering mobile and web application development principles and practices.</p>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">💼</div>
+      <h3>Software Engineering Simulation</h3>
+      <p>Completed a real-world job simulation applying industry-standard workflows and engineering tools.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="section-line"></div>
+  <div class="projects-grid">
+    <div class="proj-card">
+      <span class="proj-tag pink">Web App</span>
+      <h3>Project Title One</h3>
+      <p>A brief description of this project — what problem it solves, what tech was used, and what you learned.</p>
+    </div>
+    <div class="proj-card">
+      <span class="proj-tag lav">Mobile App</span>
+      <h3>Project Title Two</h3>
+      <p>A brief description of this project — what problem it solves, what tech was used, and what you learned.</p>
+    </div>
+    <div class="proj-card">
+      <span class="proj-tag sky">Data / ML</span>
+      <h3>Project Title Three</h3>
+      <p>A brief description of this project — what problem it solves, what tech was used, and what you learned.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <div class="section-line"></div>
+  <div class="contact-wrap">
+    <div>
+      <p class="contact-intro">I'm open to internships, collaborations, and entry-level opportunities. Feel free to reach out — I'd love to connect!</p>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:rida7102004@gmail.com">
+          <span class="icon">✉️</span> rida7102004@gmail.com
+        </a>
+      </div>
+    </div>
+    <div class="contact-form">
+      <input type="text" placeholder="Your name"/>
+      <input type="email" placeholder="Your email"/>
+      <textarea placeholder="Your message"></textarea>
+      <button class="btn">Send message</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Rida Fatima &nbsp;·&nbsp; Made with <span>♥</span></p>
+</footer>
+
+</body>
+</html>
